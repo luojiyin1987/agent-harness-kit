@@ -1,0 +1,100 @@
+openapi: 3.1.0
+info:
+  title: AtomGit PR Reader
+  version: 0.1.0
+  description: Read-only AtomGit/GitCode pull request APIs for Custom GPT Actions.
+servers:
+  - url: https://api.atomgit.com
+paths:
+  /api/v5/repos/{owner}/{repo}/pulls/{number}:
+    get:
+      operationId: getPullRequest
+      summary: Get AtomGit pull request metadata
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repo
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: number
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Pull request detail
+  /api/v5/repos/{owner}/{repo}/pulls/{number}/files:
+    get:
+      operationId: getPullRequestFiles
+      summary: Get changed files of an AtomGit pull request
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repo
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: number
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Pull request changed files
+  /api/v5/repos/{owner}/{repo}/pulls/{number}/comments:
+    get:
+      operationId: getPullRequestComments
+      summary: Get comments of an AtomGit pull request
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repo
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: number
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Pull request comments
+  /api/v5/repos/{owner}/{repo}/pulls/{number}/commits:
+    get:
+      operationId: getPullRequestCommits
+      summary: Get commits of an AtomGit pull request
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repo
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: number
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Pull request commits
